@@ -13,6 +13,7 @@
     "npm": "2.10.x"
   },
   "dependencies": {
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "grunt": "~0.4.1"
   }
 }
