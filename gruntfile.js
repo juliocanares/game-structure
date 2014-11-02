@@ -21,6 +21,36 @@ module.exports = function (grunt) {
                 src: './public/js/app.dev.js',
                 dest: './public/js/app.min.js'
             }
+        },
+        imagemin: {
+            png: {
+                options: {
+                    optimizationLevel: 7
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: './public/img/',
+                        src: ['**/*.png'],
+                        dest: './public/img/',
+                        ext: '.png'
+                    }
+                ]
+            },
+            jpg: {
+                options: {
+                    progressive: true
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: './public/img/',
+                        src: ['**/*.jpg'],
+                        dest: './public/img/',
+                        ext: '.jpg'
+                    }
+                ]
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
