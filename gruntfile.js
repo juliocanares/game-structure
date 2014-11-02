@@ -22,6 +22,15 @@ module.exports = function (grunt) {
                 dest: './public/js/app.min.js'
             }
         },
+        watch: {
+            js: {
+                files: srcFiles,
+                tasks: ['concat', 'uglify'],
+                options: {
+                    livereload: true
+                }
+            }
+        },
         imagemin: {
             png: {
                 options: {
