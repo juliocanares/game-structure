@@ -60,6 +60,13 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        stylus: {
+            compile: {
+                files: {
+                    './public/css/app.css': 'src/stylus/**/*.styl'
+                }
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
