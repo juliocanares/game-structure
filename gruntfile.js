@@ -15,6 +15,12 @@ module.exports = function (grunt) {
                 src: srcFiles,
                 dest: './public/js/app.dev.js'
             }
+        },
+        uglify: {
+            dist: {
+                src: './public/js/app.dev.js',
+                dest: './public/js/app.min.js'
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
