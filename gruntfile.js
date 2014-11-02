@@ -4,7 +4,7 @@
  */
 
 module.exports = function (grunt) {
-    var srcFiles = ['./app/src/**/*.js'];
+    var srcFiles = ['./app/js/**/*.js'];
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concat: {
