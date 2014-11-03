@@ -58,3 +58,11 @@ Game.Util.intersects = function (object1, object2) {
     }
     return isCollision;
 };
+
+Game.Util.removeThis = function (obj) {
+    if (obj && obj.parent) {
+        obj.parent.removeChild(obj);
+        obj = null;
+    }
+};
+
