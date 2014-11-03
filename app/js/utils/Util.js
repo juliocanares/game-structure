@@ -65,4 +65,3 @@ Game.Util.removeThis = function (obj) {
         obj = null;
     }
 };
-
