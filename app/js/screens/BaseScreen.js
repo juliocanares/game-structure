@@ -5,13 +5,17 @@
 
 var Game = Game || {};
 
-Game.BaseScreen = function (id) {
+Game.BaseScreen = function () {
     PIXI.DisplayObjectContainer.call(this);
 };
 
 Game.BaseScreen.constructor = Game.BaseScreen;
 
 Game.BaseScreen.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
+
+Game.BaseScreen.prototype.listeners = function () {
+    
+};
 
 Game.BaseScreen.prototype.animationIn = function () {
 
