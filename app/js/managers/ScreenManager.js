@@ -24,3 +24,15 @@ APP.ScreenManager.prototype.listeners = function () {
     Broadcaster.listen('GO_SCREEN_CLEAN', this.goScreenCleanHandlerBind);
     Broadcaster.listen('GO_SCREEN_CHANGE', this.goScreenChangeHandlerBind);
 };
+
+APP.ScreenManager.prototype.goScreenCleanHandler = function () {
+    if (this.currentScreen)
+        this.currentScreen.destroy();
+};
+
+APP.ScreenManager.prototype.goScreenChangeHandler = function (event) {
+    Broadcaster.dispatch('GO_SCREEN_CLEAN');
+    // TODO implement currentScreen
+    this.currentScreen = '';
+    this.screenContainer.addChild(this.currentScreen);
+};
