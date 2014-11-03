@@ -9,3 +9,5 @@ var Game = Game || {};
 Game.Global = function () {
 
 };
+
+Game.Global.gameName = 'games-base';
