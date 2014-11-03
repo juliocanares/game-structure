@@ -35,3 +35,12 @@ Game.Util.floatRand = function (b, a) {
     }
     return Math.random() * (a - b) + b
 };
+
+Game.Util.randomRange = function (b, a) {
+    if (isNaN(a)) {
+        a = b;
+        b = 0
+    }
+    return Math.floor(Game.Util.floatRand(b, a))
+};
+
