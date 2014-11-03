@@ -49,3 +49,12 @@ Game.Util.centerToContainer = function (target, bound) {
     target.position.x = bound.width * .5 - target.width * .5;
     target.position.y = bound.height * .5 - target.height * .5;
 };
+
+Game.Util.intersects = function (object1, object2) {
+    var isCollision = false;
+    if (object1.position.x < object2.position.x + object2.width && object1.position.x + object1.width > object2.position.x &&
+        object1.position.y < object2.position.y + object2.height && object1.position.y + object1.height > object2.position.y + 35) {
+        isCollision = true;
+    }
+    return isCollision;
+};
