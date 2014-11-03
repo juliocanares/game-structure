@@ -27,3 +27,11 @@ Game.Util.removeAllChildrens = function (f, d) {
     }
   }
 };
+
+Game.Util.floatRand = function (b, a) {
+    if (isNaN(a)) {
+        a = b;
+        b = 0
+    }
+    return Math.random() * (a - b) + b
+};
