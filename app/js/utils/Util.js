@@ -44,3 +44,8 @@ Game.Util.randomRange = function (b, a) {
     return Math.floor(Game.Util.floatRand(b, a))
 };
 
+
+Game.Util.centerToContainer = function (target, bound) {
+    target.position.x = bound.width * .5 - target.width * .5;
+    target.position.y = bound.height * .5 - target.height * .5;
+};
