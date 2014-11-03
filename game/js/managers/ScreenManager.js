@@ -13,6 +13,7 @@ Game.ScreenManager = function () {
 
     this.listeners();
 };
+
 Game.ScreenManager.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 
 Game.ScreenManager.constructor = Game.ScreenManager;
