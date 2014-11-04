@@ -4,9 +4,9 @@
  */
 var Game = Game || {};
 
-Game.Magazine = function () {
+Game.BoilerPlate = function () {
 
-    Game.Magazine.instance = this;
+    Game.BoilerPlate.instance = this;
 
     this.stage = new PIXI.Stage(0x000000);
 
@@ -16,13 +16,13 @@ Game.Magazine = function () {
     this.renderer.view.style.position = "absolute";
     this.renderer.view.style.top = "0";
     this.renderer.view.style.left = "0";
-    
+
     requestAnimationFrame(this.update.bind(this));
 };
 
-Game.Magazine.prototype = Object.create(Object.prototype);
+Game.BoilerPlate.prototype = Object.create(Object.prototype);
 
-Game.Magazine.prototype.update = function () {
+Game.BoilerPlate.prototype.update = function () {
     requestAnimationFrame(this.update.bind(this));
     this.renderer.render(this.stage)
 };
