@@ -7,6 +7,8 @@ var Game = Game || {};
 
 Game.MainScreen = function () {
     Game.BaseScreen.call(this);
+    var pixi = new PIXI.Sprite(PIXI.Texture.fromImage('pixi.jpg'));
+    this.addChild(pixi);
 };
 
 Game.MainScreen.constructor = Game.MainScreen;
