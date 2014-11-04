@@ -19,20 +19,20 @@ Game.ScreenManager.prototype = Object.create(PIXI.DisplayObjectContainer.prototy
 Game.ScreenManager.constructor = Game.ScreenManager;
 
 Game.ScreenManager.prototype.listeners = function () {
-    this.goScreenCleanHandlerBind = this.goScreenCleanHandler.bind(this);
-    this.goScreenChangeHandlerBind = this.goScreenChangeHandler.bind(this);
+    this.goCleanScreenHandlerBind = this.goCleanScreenHandler.bind(this);
+    this.goChangeScreenHandlerBind = this.goChangeScreenHandler.bind(this);
 
-    Broadcaster.listen('GO_SCREEN_CLEAN', this.goScreenCleanHandlerBind);
-    Broadcaster.listen('GO_SCREEN_CHANGE', this.goScreenChangeHandlerBind);
+    Broadcaster.listen('GO_CLEAN_SCREEN', this.goCleanScreenHandlerBind);
+    Broadcaster.listen('GO_CHANGE_SCREEN', this.goChangeScreenHandlerBind);
 };
 
-Game.ScreenManager.prototype.goScreenCleanHandler = function () {
+Game.ScreenManager.prototype.goCleanScreenHandler = function () {
     if (this.currentScreen)
         this.currentScreen.destroy();
 };
 
-Game.ScreenManager.prototype.goScreenChangeHandler = function (event) {
-    Broadcaster.dispatch('GO_SCREEN_CLEAN');
+Game.ScreenManager.prototype.goChangeScreenHandler = function (event) {
+    Broadcaster.dispatch('GO_CLEAN_SCREEN');
     switch(event.screen){
         case Game.Global.Screens.MAIN:
             currentScreen = new Game.MainScreen();

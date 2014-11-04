@@ -20,6 +20,8 @@ Game.Boilerplate = function () {
 
     this.screenManager = new Game.ScreenManager();
     this.stage.addChild(this.screenManager);
+
+    Broadcaster.dispatchEvent("GO_CHANGE_SCREEN", {screen: Game.Global.Screens.MAIN});
     
     requestAnimationFrame(this.update.bind(this));
 };
