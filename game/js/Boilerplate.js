@@ -19,7 +19,8 @@ Game.Boilerplate = function () {
     new Game.Global();
 
     this.screenManager = new Game.ScreenManager();
-
+    this.stage.addChild(this.screenManager);
+    
     requestAnimationFrame(this.update.bind(this));
 };
 
