@@ -4,7 +4,7 @@
  */
 var Game = Game || {};
 
-Game.BoilerPlate = function () {
+Game.Boilerplate = function () {
 
     Game.BoilerPlate.instance = this;
 
