@@ -6,7 +6,7 @@ var Game = Game || {};
 
 Game.Boilerplate = function () {
 
-    Game.BoilerPlate.instance = this;
+    Game.Boilerplate.instance = this;
 
     this.stage = new PIXI.Stage(0x000000);
 
@@ -20,9 +20,9 @@ Game.Boilerplate = function () {
     requestAnimationFrame(this.update.bind(this));
 };
 
-Game.BoilerPlate.prototype = Object.create(Object.prototype);
+Game.Boilerplate.prototype = Object.create(Object.prototype);
 
-Game.BoilerPlate.prototype.update = function () {
+Game.Boilerplate.prototype.update = function () {
     requestAnimationFrame(this.update.bind(this));
     this.renderer.render(this.stage)
 };
