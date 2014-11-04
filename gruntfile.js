@@ -13,13 +13,13 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: srcFiles,
-                dest: './public/js/game.dev.js'
+                dest: './public/game.dev.js'
             }
         },
         uglify: {
             dist: {
-                src: './public/js/game.dev.js',
-                dest: './public/js/game.min.js'
+                src: './public/game.dev.js',
+                dest: './public/game.min.js'
             }
         },
         watch: {
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
         stylus: {
             compile: {
                 files: {
-                    './public/css/game.css': 'game/stylus/**/*.styl'
+                    './public/game.css': 'game/stylus/**/*.styl'
                 }
             }
         }
