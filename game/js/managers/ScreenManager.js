@@ -33,7 +33,10 @@ Game.ScreenManager.prototype.goScreenCleanHandler = function () {
 
 Game.ScreenManager.prototype.goScreenChangeHandler = function (event) {
     Broadcaster.dispatch('GO_SCREEN_CLEAN');
-    // TODO implement currentScreen
-    this.currentScreen = '';
+    switch(event.screen){
+        case Game.Global.Screens.MAIN:
+            currentScreen = new Game.MainScreen();
+        break;
+    }
     this.screenContainer.addChild(this.currentScreen);
 };
