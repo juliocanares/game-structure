@@ -11,6 +11,7 @@ Game.Global = function () {
 };
 
 Game.Global.gameName = 'games-base';
-Game.Global.Screens = {
-	MAIN: 'MainScreen'
+
+Game.Global.screens = {
+	main: 'mainScreen'
 };

@@ -29,13 +29,14 @@ Game.Boilerplate.prototype.update = function () {
 var Game = Game || {};
 
 Game.Global = function () {
-	
+
 };
 
 Game.Global.gameName = 'games-base';
-Game.Global.Screens = {
-	MAIN: 'MainScreen'
-}
+
+Game.Global.screens = {
+	main: 'mainScreen'
+};
 Game.ScreenManager = function () {
     PIXI.DisplayObjectContainer.call(this);
 
@@ -58,7 +59,8 @@ Game.ScreenManager.prototype.listeners = function () {
     Broadcaster.addEventListener('GO_CLEAN_SCREEN', this.goCleanScreenHandlerBind);
     Broadcaster.addEventListener('GO_CHANGE_SCREEN', this.goChangeScreenHandlerBind);
 
-    Broadcaster.dispatchEvent("GO_CHANGE_SCREEN", {screen: Game.Global.Screens.MAIN});
+    // launch first screen
+    Broadcaster.dispatchEvent("GO_CHANGE_SCREEN", {screen: Game.Global.screens.MAIN});
 };
 
 Game.ScreenManager.prototype.goCleanScreenHandler = function () {
@@ -69,7 +71,7 @@ Game.ScreenManager.prototype.goCleanScreenHandler = function () {
 Game.ScreenManager.prototype.goChangeScreenHandler = function (event) {
     Broadcaster.dispatchEvent('GO_CLEAN_SCREEN');
     switch(event.screen){
-        case Game.Global.Screens.MAIN:
+        case Game.Global.screens.MAIN:
             this.currentScreen = new Game.MainScreen();
         break;
     }

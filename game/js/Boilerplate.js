@@ -15,7 +15,7 @@ Game.Boilerplate = function () {
     this.renderer.view.style.position = "absolute";
     this.renderer.view.style.top = "0";
     this.renderer.view.style.left = "0";
-
+    
     new Game.Global();
 
     this.screenManager = new Game.ScreenManager();
