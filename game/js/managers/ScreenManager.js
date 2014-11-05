@@ -22,8 +22,11 @@ Game.ScreenManager.prototype.listeners = function () {
     this.goCleanScreenHandlerBind = this.goCleanScreenHandler.bind(this);
     this.goChangeScreenHandlerBind = this.goChangeScreenHandler.bind(this);
 
-    Broadcaster.listen('GO_CLEAN_SCREEN', this.goCleanScreenHandlerBind);
-    Broadcaster.listen('GO_CHANGE_SCREEN', this.goChangeScreenHandlerBind);
+    Broadcaster.addEventListener('GO_CLEAN_SCREEN', this.goCleanScreenHandlerBind);
+    Broadcaster.addEventListener('GO_CHANGE_SCREEN', this.goChangeScreenHandlerBind);
+
+    // launch first screen
+    Broadcaster.dispatchEvent("GO_CHANGE_SCREEN", {screen: Game.Global.Screens.MAIN});
 };
 
 Game.ScreenManager.prototype.goCleanScreenHandler = function () {
@@ -32,10 +35,10 @@ Game.ScreenManager.prototype.goCleanScreenHandler = function () {
 };
 
 Game.ScreenManager.prototype.goChangeScreenHandler = function (event) {
-    Broadcaster.dispatch('GO_CLEAN_SCREEN');
+    Broadcaster.dispatchEvent('GO_CLEAN_SCREEN');
     switch(event.screen){
         case Game.Global.Screens.MAIN:
-            currentScreen = new Game.MainScreen();
+            this.currentScreen = new Game.MainScreen();
         break;
     }
     this.screenContainer.addChild(this.currentScreen);
