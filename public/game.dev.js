@@ -1,18 +1,22 @@
 var Game = Game || {};
 
 Game.Boilerplate = function () {
-
     Game.Boilerplate.instance = this;
 
     this.stage = new PIXI.Stage(0x000000);
 
-    this.renderer = PIXI.autoDetectRenderer('100%', '100%');
+    this.renderer = PIXI.autoDetectRenderer(1024, 768);
 
     document.body.appendChild(this.renderer.view);
     this.renderer.view.style.position = "absolute";
     this.renderer.view.style.top = "0";
     this.renderer.view.style.left = "0";
 
+    new Game.Global();
+
+    this.screenManager = new Game.ScreenManager();
+    this.stage.addChild(this.screenManager);
+    
     requestAnimationFrame(this.update.bind(this));
 };
 
@@ -20,15 +24,18 @@ Game.Boilerplate.prototype = Object.create(Object.prototype);
 
 Game.Boilerplate.prototype.update = function () {
     requestAnimationFrame(this.update.bind(this));
-    this.renderer.render(this.stage)
+    this.renderer.render(this.stage);
 };
 var Game = Game || {};
 
 Game.Global = function () {
-
+	
 };
 
 Game.Global.gameName = 'games-base';
+Game.Global.Screens = {
+	MAIN: 'MainScreen'
+}
 Game.ScreenManager = function () {
     PIXI.DisplayObjectContainer.call(this);
 
@@ -45,22 +52,27 @@ Game.ScreenManager.prototype = Object.create(PIXI.DisplayObjectContainer.prototy
 Game.ScreenManager.constructor = Game.ScreenManager;
 
 Game.ScreenManager.prototype.listeners = function () {
-    this.goScreenCleanHandlerBind = this.goScreenCleanHandler.bind(this);
-    this.goScreenChangeHandlerBind = this.goScreenChangeHandler.bind(this);
+    this.goCleanScreenHandlerBind = this.goCleanScreenHandler.bind(this);
+    this.goChangeScreenHandlerBind = this.goChangeScreenHandler.bind(this);
 
-    Broadcaster.listen('GO_SCREEN_CLEAN', this.goScreenCleanHandlerBind);
-    Broadcaster.listen('GO_SCREEN_CHANGE', this.goScreenChangeHandlerBind);
+    Broadcaster.addEventListener('GO_CLEAN_SCREEN', this.goCleanScreenHandlerBind);
+    Broadcaster.addEventListener('GO_CHANGE_SCREEN', this.goChangeScreenHandlerBind);
+
+    Broadcaster.dispatchEvent("GO_CHANGE_SCREEN", {screen: Game.Global.Screens.MAIN});
 };
 
-Game.ScreenManager.prototype.goScreenCleanHandler = function () {
+Game.ScreenManager.prototype.goCleanScreenHandler = function () {
     if (this.currentScreen)
         this.currentScreen.destroy();
 };
 
-Game.ScreenManager.prototype.goScreenChangeHandler = function (event) {
-    Broadcaster.dispatch('GO_SCREEN_CLEAN');
-    // TODO implement currentScreen
-    this.currentScreen = '';
+Game.ScreenManager.prototype.goChangeScreenHandler = function (event) {
+    Broadcaster.dispatchEvent('GO_CLEAN_SCREEN');
+    switch(event.screen){
+        case Game.Global.Screens.MAIN:
+            this.currentScreen = new Game.MainScreen();
+        break;
+    }
     this.screenContainer.addChild(this.currentScreen);
 };
 
@@ -89,6 +101,16 @@ Game.BaseScreen.prototype.animationOut = function () {
 Game.BaseScreen.prototype.destroy = function () {
 
 };
+var Game = Game || {};
+
+Game.MainScreen = function () {
+    Game.BaseScreen.call(this);
+    this.pixi = new PIXI.Sprite(PIXI.Texture.fromImage('img/logo.png'));
+    this.addChild(this.pixi);
+};
+
+Game.MainScreen.constructor = Game.MainScreen;
+Game.MainScreen.prototype = Object.create(Game.BaseScreen.prototype);
 var Game = Game || {};
 
 Game.Util = function () {
