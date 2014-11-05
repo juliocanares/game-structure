@@ -12,9 +12,9 @@
 
 ## Libraries Included
 
-* pixi.js
+* [pixi.js](https://github.com/pixijs/pixi.js)
 * [broadcaster.js](https://github.com/juliocanares/broadcaster.js)
-* normalize.css
+* [normalize.css](https://github.com/necolas/normalize.css/)
 
 ## Instructions
 
