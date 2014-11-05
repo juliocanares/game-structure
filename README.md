@@ -1,6 +1,6 @@
-# Games base
+# About
 
-> Games base is a game structure to build javascript games using pixi.js as renderer.
+> this repo is a game structure that I use to build javascript games using pixi.js as renderer.
 
 ## Directory Structure
 
@@ -8,17 +8,13 @@
 * elements (background, bullets, enemies, etc)
 * screens(instructions, main screen, etc)
 * managers(game manager, screen manager, etc)
-* utils(util methods, collision methods, mathematics, etc)
+* utils(collision methods, mathematics, etc)
 
 ## Libraries Included
 
 * [pixi.js](https://github.com/pixijs/pixi.js)
 * [broadcaster.js](https://github.com/juliocanares/broadcaster.js)
 * [normalize.css](https://github.com/necolas/normalize.css/)
-
-## Instructions
-
-Use with ``nodejs^0.12.0`, clone the repo, `npm install` and `node app.js`.
 
 
 ## How to build
